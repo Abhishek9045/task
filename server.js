@@ -1,4 +1,5 @@
 const express = require('express')
+const SERVER_PORT = process.env.port || 3333
 const { db } = require('./db')
 const todoRoute = require('./routes/todos')
 const noteRoute = require('./routes/notes')
@@ -15,7 +16,7 @@ app.use('/notes',noteRoute)
 
 db.sync()
   .then(() => {
-    app.listen(process.env.PORT || 3333)
+    app.listen(SERVER_PORT)
   })
   .catch((err) => {
     console.error(err)
